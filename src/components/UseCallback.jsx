@@ -12,8 +12,9 @@ const UseCallback = () => {
     },[])
   return (
     <div><h1>{count}</h1>
-              <Button onClick={increment}>Increment</Button>
-             <Button onClick={decrement}>Decrement</Button></div>
+          <Button onClick={increment}>Increment</Button>
+          <Button onClick={decrement}>Decrement</Button>
+      </div>
   )
 }
 

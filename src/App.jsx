@@ -1,35 +1,41 @@
-// import {useState,memo} from 'react'
-
-// import ThemeToggle from './components/ThemeToggle'
-// import NotUse from './components/NotUse'
-
-import UseCallback from './components/UseCallback'
-// import Count from './components/Count'
+import React, { memo,useState,useCallback, useMemo } from 'react'
+import Button from './component/Button'
+import DemoOutput from './component/Demo/Demo'
+import DemoList from './component/Demo/DemoList'
 
 const App = () => {
-    // console.log("app render")
-    // let [count, setCount] = useState(0);
-    // let bioData = useMemo(() => {
-    //     return{
-    //     name: "Swati",
-    //     age:"26",
-    // }
-    // },[])
-   
-    
+  let [listTitle, setListTitle] = useState("My List")
+  console.log("app runnig")
+  // let [showParagraph, setShowParagraph] = useState(false);
+  // let [allowToggle, setAllowTogle] = useState(false);
+
+  // let handleParagraph = useCallback(() => {
+  //   console.log("para btn")
+  //   if (allowToggle) {
+  //     setShowParagraph((pre) => !pre)
+  //   }
+  // }, [allowToggle]);
+  // let allowToggleHandler = useCallback(() => {
+  //   console.log("toggle btn")
+  // setAllowTogle((pre)=>!pre)
+  // },[])
+  let changeTitleHandler = useCallback(() => {
+  setListTitle("New Title")
+  }, [])
+  let listItems= useMemo(()=>[5,3,1,10,9],[])
   return (
-      <>
-          {/* <NotUse/> */}
-    <UseCallback/>
-          
-          <br />
-          <br />
-         {/* <ThemeToggle toggle={toggle}/> */}
-          {/* <h1>{count}</h1>
-          <button onClick={()=>setCount(++count)}>Increment</button>
-          <Count bioData={bioData}/> */}
-     </>
+    <div>
+      <h1>Hi there!</h1>
+      {/* <DemoOutput showParagraph={false}>This is Chldren</DemoOutput>
+      <h1>{showParagraph?"Para show":"Not show"}</h1>
+      <Button onClick={handleParagraph}>Toggle Paragraph</Button>
+      <h1>{allowToggle?"True":"False"}</h1>
+      <Button onClick={allowToggleHandler}>Allow toggle</Button> */}
+      
+      <DemoList title={listTitle} items={listItems} />
+      <Button onClick={changeTitleHandler}> Change List Title</Button>
+    </div>
   )
 }
 
-export default App
+export default memo(App)
